@@ -1,0 +1,10 @@
+{
+  "descricao": "Contagem conhecida de violacoes, por arquivo e regra. A linha nao entra: mover codigo nao conta como divida nova.",
+  "total": 4,
+  "chaves": {
+    "fixtures/ui-src/components/RelatorioLegado.tsx::R1-tabela-sem-rolagem": 1,
+    "fixtures/ui-src/components/RelatorioLegado.tsx::R2-largura-fixa-px": 1,
+    "fixtures/ui-src/components/RelatorioLegado.tsx::R3-nowrap-conteudo-variavel": 1,
+    "fixtures/ui-src/components/RelatorioLegado.tsx::R4-truncamento-sem-valor": 1
+  }
+}

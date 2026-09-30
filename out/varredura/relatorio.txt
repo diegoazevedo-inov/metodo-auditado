@@ -1,0 +1,82 @@
+RELATORIO DE ESTOURO HORIZONTAL
+======================================================================
+viewports consolidados    : celular, celular-estresse, desktop, tablet
+ancoras                   : moldura=[data-ui-frame] conteudo=[data-ui-content]
+
+-- PLACAR --
+  medicoes de rota            : 40
+  rotas quebradas             : 10
+  rotas saudaveis             : 30
+  rotas NAO MEDIVEIS          : 0  (ja incluidas nas quebradas)
+  registros INSTAVEIS         : 0  (leituras que nao se repetiram dentro da janela)
+  defeitos de pagina          : 19 (19 distintos)
+  defeitos da moldura         : 47 (4 itens de trabalho)
+
+guarda de ancora OK: moldura casou 48 defeito(s), conteudo casou 19.
+
+-- ROTAS NAO MEDIVEIS (contadas como quebradas) --
+  (nenhuma)
+
+-- ESTRUTURA COMPARTILHADA (MOLDURA) --
+  Cada estouro da moldura aparece aqui uma vez; ele nao torna rota
+  nenhuma quebrada e nao entra no ranking.
+    [recorte-sem-rolagem] #nav-abas
+      1 item de trabalho, visto em 2 viewport(s): celular, celular-estresse
+    [transbordo-visivel] html
+      1 item de trabalho, visto em 4 viewport(s): celular, celular-estresse, desktop, tablet
+    [transbordo-visivel] html > body
+      1 item de trabalho, visto em 4 viewport(s): celular, celular-estresse, desktop, tablet
+    [transbordo-visivel] html > body > div
+      1 item de trabalho, visto em 4 viewport(s): celular, celular-estresse, desktop, tablet
+
+-- RANKING POR MODULO (apenas defeitos de pagina) --
+  A moldura tem secao propria acima; aqui entram so as paginas.
+      11 defeito(s)  modulo 'clientes'  em 4 rota(s)
+       8 defeito(s)  modulo 'relatorios'  em 1 rota(s)
+
+-- PONTOS ACIONAVEIS (defeitos de pagina sem achado mais interno) --
+  Quando varios elementos aninhados acusam o mesmo excesso, lista so
+  os que nao tem outro achado dentro de si: e por eles que se comeca.
+    /clientes/c-1001         transbordo-visivel     #razao-social-longa   [celular, celular-estresse]
+    /clientes/c-1002         transbordo-visivel     #razao-social-longa   [celular, celular-estresse]
+    /clientes/c-1003         transbordo-visivel     #razao-social-longa   [celular-estresse]
+    /clientes/c-1005         transbordo-visivel     #razao-social-longa   [celular-estresse]
+    /relatorios              transbordo-visivel     #bloco-relatorio   [celular, celular-estresse, desktop, tablet]
+
+-- DEFEITOS DE PAGINA, POR VIEWPORT --
+  [celular] 5 defeito(s)
+      /clientes/c-1001         transbordo-visivel     #razao-social-longa
+      /clientes/c-1001         transbordo-visivel     body > div > main
+      /clientes/c-1002         transbordo-visivel     #razao-social-longa
+      /relatorios              transbordo-visivel     #bloco-relatorio
+      /relatorios              transbordo-visivel     body > div > main
+  [celular-estresse] 10 defeito(s)
+      /clientes/c-1001         transbordo-visivel     #razao-social-longa
+      /clientes/c-1001         transbordo-visivel     body > div > main
+      /clientes/c-1002         transbordo-visivel     #razao-social-longa
+      /clientes/c-1002         transbordo-visivel     body > div > main
+      /clientes/c-1003         transbordo-visivel     #razao-social-longa
+      /clientes/c-1003         transbordo-visivel     body > div > main
+      /clientes/c-1005         transbordo-visivel     #razao-social-longa
+      /clientes/c-1005         transbordo-visivel     body > div > main
+      /relatorios              transbordo-visivel     #bloco-relatorio
+      /relatorios              transbordo-visivel     body > div > main
+  [desktop] 2 defeito(s)
+      /relatorios              transbordo-visivel     #bloco-relatorio
+      /relatorios              transbordo-visivel     body > div > main
+  [tablet] 2 defeito(s)
+      /relatorios              transbordo-visivel     #bloco-relatorio
+      /relatorios              transbordo-visivel     body > div > main
+
+-- ESCOPO --
+  piso de severidade: 2.0px
+  identificadores de detalhe resolvidos no viewport: desktop
+  rotas excluidas da medicao, com o motivo:
+    /clientes/c-9999: rota de erro 404, sem layout proprio a medir
+    /sair: encerra a sessao: medi-la derrubaria as rotas seguintes do mesmo viewport
+
+-- ASSINATURA --
+  19 tupla(s) (viewport, rota, especie, seletor)
+  sem excedente em pixels, sem data ou hora, sem texto lido da tela.
+  A baseline vale como fixada depois que duas execucoes independentes
+  produzirem esta mesma assinatura.

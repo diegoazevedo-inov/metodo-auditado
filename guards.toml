@@ -1,0 +1,99 @@
+# Configuracao de projeto dos verificadores de interface.
+# A spec fixa comportamento; os nomes concretos do framework CSS, dos tokens
+# semanticos e das isencoes sao deste projeto e moram aqui.
+
+[projeto]
+raiz_ui       = "fixtures/ui-src"
+extensoes     = [".tsx", ".jsx", ".ts", ".js"]
+ignorar_dirs  = ["node_modules", ".git", "dist", "build", "__pycache__"]
+
+# ---------------------------------------------------------------- GUARD 1
+[paleta]
+# Familias de cor do framework CSS em uso (Tailwind-like), grau numerico.
+familias = [
+  "slate", "gray", "zinc", "neutral", "stone", "red", "orange", "amber",
+  "yellow", "lime", "green", "emerald", "teal", "cyan", "sky", "blue",
+  "indigo", "violet", "purple", "fuchsia", "pink", "rose",
+]
+
+# Prefixos de propriedade que aceitam cor. O guard tambem reconhece um
+# segmento de lado/eixo entre o prefixo e a cor (border-b-*, divide-x-*);
+# prefixo COMPOSTO (ring-offset) precisa estar listado por inteiro.
+prefixos_cor = [
+  "text", "bg", "border", "ring", "ring-offset", "outline", "divide", "fill",
+  "stroke", "decoration", "shadow", "accent", "caret", "from", "via", "to",
+  "placeholder", "selection",
+]
+
+# Tokens semanticos de cor do tema (sem grau numerico).
+tokens_semanticos = [
+  "background", "foreground", "card", "card-foreground", "popover",
+  "popover-foreground", "primary", "primary-foreground", "secondary",
+  "secondary-foreground", "muted", "muted-foreground", "accent",
+  "accent-foreground", "destructive", "destructive-foreground", "border",
+  "input", "ring", "brand", "brand-foreground",
+]
+
+# Cores de marca: permitidas em icone e borda; em texto, a especie 8 acusa.
+cores_marca = ["brand"]
+
+# Variantes de pseudo-elemento que desenham texto na tela: a especie 8 as
+# trata como texto mesmo quando o elemento que as recebe nao e textual.
+variantes_rotulo = ["file", "placeholder"]
+
+# Fundo solido de papel semantico -> token de texto validado sobre ele.
+# Especie 6 exige EXATAMENTE este token; qualquer outro texto sobre esse fundo,
+# ainda que seja outro token semantico, e acusado.
+[paleta.fundo_texto]
+"bg-primary"     = "text-primary-foreground"
+"bg-secondary"   = "text-secondary-foreground"
+"bg-destructive" = "text-destructive-foreground"
+"bg-accent"      = "text-accent-foreground"
+"bg-card"        = "text-card-foreground"
+"bg-popover"     = "text-popover-foreground"
+"bg-brand"       = "text-brand-foreground"
+
+# Allowlist de arquivos isentos. CADA entrada com motivo escrito.
+# Mantenha poucas entradas; o total nunca deve aumentar.
+[paleta.isentos]
+"components/BrandLogoMark.tsx" = "marca registrada: os hex do logotipo sao definidos pelo manual da marca e nao podem virar token de tema"
+
+# ---------------------------------------------------------------- GUARD 2
+[responsivo]
+baseline = "baseline-responsivo.json"
+# Nome do componente-padrao de tabela do projeto (isenta a regra 1).
+componente_tabela = "DataTable"
+# Arquivo que DEFINE o componente-padrao: isento da regra 1.
+arquivo_componente_tabela = "components/DataTable.tsx"
+# Colunas de conteudo variavel: impedir quebra de linha nelas e violacao.
+colunas_conteudo_variavel = ["nome", "name", "descricao", "description",
+                             "endereco", "address", "titulo", "title",
+                             "observacao", "email"]
+# Colunas onde impedir quebra e legitimo.
+colunas_atomicas = ["data", "date", "valor", "value", "total", "qtd",
+                    "quantidade", "id", "codigo", "status"]
+
+# ---------------------------------------------------------------- GUARD 3
+[contraste]
+arquivo_estilo = "fixtures/tokens.css"
+seletor_tema_base = ":root"
+seletor_tema_alternativo = ".dark"
+
+# ---------------------------------------------------------------- GUARDS 4-6
+[medicao]
+# Piso de severidade em pixels CSS. Ver DECISOES.md 1.3: o experimento
+# (proofs/experimento_piso.py) rodou e NAO calibrou este numero -- no
+# fixture nada oscila e nada existe abaixo de 10px, entao qualquer piso ate
+# 10 da o mesmo placar. 2.0 e ponto de partida seguro, nao valor medido.
+# Projeto com fonte web e imagem precisa rodar o experimento e fixar o seu.
+piso_severidade_px = 2.0
+limite_por_especie = 50
+
+# Dois marcadores semanticos, independentes de estilo, declarados no layout
+# raiz: um na moldura do aplicativo, outro na area de conteudo. O GUARD 6
+# classifica como defeito de PAGINA o que esta sob o marcador de conteudo, e
+# o resto como estrutura compartilhada (ver DECISOES.md 2.2). Renomear
+# qualquer um sem atualizar aqui e recusado pelo guard de ancora do GUARD 6.
+[medicao.ancoras]
+moldura  = "[data-ui-frame]"
+conteudo = "[data-ui-content]"

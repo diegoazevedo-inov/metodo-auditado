@@ -1,0 +1,686 @@
+{
+  "escopo_aplicado": {
+    "ancoras": {
+      "conteudo": "[data-ui-content]",
+      "moldura": "[data-ui-frame]"
+    },
+    "areas": [
+      "publica",
+      "operacao",
+      "detalhe"
+    ],
+    "fora_de_escopo": [
+      {
+        "motivo": "rota de erro 404, sem layout proprio a medir",
+        "rota": "/clientes/c-9999"
+      },
+      {
+        "motivo": "encerra a sessao: medi-la derrubaria as rotas seguintes do mesmo viewport",
+        "rota": "/sair"
+      }
+    ],
+    "identificadores_de_detalhe": {
+      "detalhe": [
+        "/clientes/c-1001",
+        "/clientes/c-1002",
+        "/clientes/c-1003",
+        "/clientes/c-1004",
+        "/clientes/c-1005"
+      ]
+    },
+    "piso_severidade_px": 2.0,
+    "rotas_medidas": [
+      "/",
+      "/clientes",
+      "/clientes/c-1001",
+      "/clientes/c-1002",
+      "/clientes/c-1003",
+      "/clientes/c-1004",
+      "/clientes/c-1005",
+      "/login",
+      "/publico/precos",
+      "/relatorios"
+    ],
+    "viewport_de_resolucao_de_detalhe": "desktop"
+  },
+  "identificador_execucao": "13803453-c1fd-43d2-889b-e594e5dd74a8",
+  "instaveis": 0,
+  "registros": [
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 107,
+          "filho_responsavel": null,
+          "largura_conteudo": 403,
+          "largura_visivel": 296,
+          "no_placar": true,
+          "seletor": "#razao-social-longa",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 95,
+          "filho_responsavel": null,
+          "largura_conteudo": 415,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "body > div > main",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 95,
+          "filho_responsavel": null,
+          "largura_conteudo": 415,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 95,
+          "filho_responsavel": null,
+          "largura_conteudo": 415,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 95,
+          "filho_responsavel": null,
+          "largura_conteudo": 415,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body > div",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "detalhe",
+      "captura": "capturas/celular-estresse-clientes_c_1001.png",
+      "destino_esperado": "/clientes/c-1001",
+      "destino_final": "/clientes/c-1001",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 415,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 95,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 6,
+      "rota": "/clientes/c-1001"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 72,
+          "filho_responsavel": null,
+          "largura_conteudo": 368,
+          "largura_visivel": 296,
+          "no_placar": true,
+          "seletor": "#razao-social-longa",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 60,
+          "filho_responsavel": null,
+          "largura_conteudo": 380,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "body > div > main",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 60,
+          "filho_responsavel": null,
+          "largura_conteudo": 380,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 60,
+          "filho_responsavel": null,
+          "largura_conteudo": 380,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 60,
+          "filho_responsavel": null,
+          "largura_conteudo": 380,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body > div",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "detalhe",
+      "captura": "capturas/celular-estresse-clientes_c_1002.png",
+      "destino_esperado": "/clientes/c-1002",
+      "destino_final": "/clientes/c-1002",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 380,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 60,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 6,
+      "rota": "/clientes/c-1002"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 24,
+          "filho_responsavel": null,
+          "largura_conteudo": 320,
+          "largura_visivel": 296,
+          "no_placar": true,
+          "seletor": "#razao-social-longa",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 12,
+          "filho_responsavel": null,
+          "largura_conteudo": 332,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "body > div > main",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 12,
+          "filho_responsavel": null,
+          "largura_conteudo": 332,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 12,
+          "filho_responsavel": null,
+          "largura_conteudo": 332,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 12,
+          "filho_responsavel": null,
+          "largura_conteudo": 332,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body > div",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "detalhe",
+      "captura": "capturas/celular-estresse-clientes_c_1003.png",
+      "destino_esperado": "/clientes/c-1003",
+      "destino_final": "/clientes/c-1003",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 332,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 12,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 6,
+      "rota": "/clientes/c-1003"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "detalhe",
+      "captura": "capturas/celular-estresse-clientes_c_1004.png",
+      "destino_esperado": "/clientes/c-1004",
+      "destino_final": "/clientes/c-1004",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 320,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 0,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 1,
+      "rota": "/clientes/c-1004"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 26,
+          "filho_responsavel": null,
+          "largura_conteudo": 322,
+          "largura_visivel": 296,
+          "no_placar": true,
+          "seletor": "#razao-social-longa",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 14,
+          "filho_responsavel": null,
+          "largura_conteudo": 334,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "body > div > main",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 14,
+          "filho_responsavel": null,
+          "largura_conteudo": 334,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 14,
+          "filho_responsavel": null,
+          "largura_conteudo": 334,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 14,
+          "filho_responsavel": null,
+          "largura_conteudo": 334,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body > div",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "detalhe",
+      "captura": "capturas/celular-estresse-clientes_c_1005.png",
+      "destino_esperado": "/clientes/c-1005",
+      "destino_final": "/clientes/c-1005",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 334,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 14,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 6,
+      "rota": "/clientes/c-1005"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "operacao",
+      "captura": "capturas/celular-estresse-raiz.png",
+      "destino_esperado": "/",
+      "destino_final": "/",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 320,
+        "documento_visivel": 320,
+        "elementos_examinados": 24,
+        "excedente_da_pagina": 0,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 1,
+      "rota": "/"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "operacao",
+      "captura": "capturas/celular-estresse-clientes.png",
+      "destino_esperado": "/clientes",
+      "destino_final": "/clientes",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 320,
+        "documento_visivel": 320,
+        "elementos_examinados": 45,
+        "excedente_da_pagina": 0,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 1,
+      "rota": "/clientes"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 1125,
+          "filho_responsavel": "#tabela-competencias",
+          "largura_conteudo": 1421,
+          "largura_visivel": 296,
+          "no_placar": true,
+          "seletor": "#bloco-relatorio",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 1113,
+          "filho_responsavel": null,
+          "largura_conteudo": 1433,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "body > div > main",
+          "sob_ancora_conteudo": true,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 1113,
+          "filho_responsavel": null,
+          "largura_conteudo": 1433,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 1113,
+          "filho_responsavel": null,
+          "largura_conteudo": 1433,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": false,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "transbordo-visivel",
+          "excedente": 1113,
+          "filho_responsavel": null,
+          "largura_conteudo": 1433,
+          "largura_visivel": 320,
+          "no_placar": true,
+          "seletor": "html > body > div",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": true
+        },
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "operacao",
+      "captura": "capturas/celular-estresse-relatorios.png",
+      "destino_esperado": "/relatorios",
+      "destino_final": "/relatorios",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 1433,
+        "documento_visivel": 320,
+        "elementos_examinados": 51,
+        "excedente_da_pagina": 1113,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 6,
+      "rota": "/relatorios"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "publica",
+      "captura": "capturas/celular-estresse-login.png",
+      "destino_esperado": "/login",
+      "destino_final": "/login",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 320,
+        "documento_visivel": 320,
+        "elementos_examinados": 25,
+        "excedente_da_pagina": 0,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 1,
+      "rota": "/login"
+    },
+    {
+      "abaixo_do_piso": 0,
+      "achados": [
+        {
+          "especie": "recorte-sem-rolagem",
+          "excedente": 176,
+          "filho_responsavel": "#nav-abas > a:nth-of-type(6)",
+          "largura_conteudo": 480,
+          "largura_visivel": 304,
+          "no_placar": true,
+          "seletor": "#nav-abas",
+          "sob_ancora_conteudo": false,
+          "sob_ancora_moldura": true,
+          "tem_achado_mais_interno": false
+        }
+      ],
+      "area": "publica",
+      "captura": "capturas/celular-estresse-publico_precos.png",
+      "destino_esperado": "/publico/precos",
+      "destino_final": "/publico/precos",
+      "estavel": true,
+      "leituras_ate_convergir": 2,
+      "metricas": {
+        "documento_conteudo": 320,
+        "documento_visivel": 320,
+        "elementos_examinados": 23,
+        "excedente_da_pagina": 0,
+        "viewport_altura": 720,
+        "viewport_largura": 320
+      },
+      "placar": 1,
+      "rota": "/publico/precos"
+    }
+  ],
+  "viewport": {
+    "altura": 720,
+    "largura": 320,
+    "nome": "celular-estresse",
+    "piso_de_estresse": true
+  }
+}

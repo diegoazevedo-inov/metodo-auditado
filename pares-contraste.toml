@@ -1,0 +1,90 @@
+# Tabela de pares de contraste a avaliar (GUARD 3).
+#
+# `minimo` nomeia a CATEGORIA da norma, nunca um numero escolhido pelo projeto:
+#   "texto"     -> texto corrente         (razao maior da norma)
+#   "interface" -> elemento de interface, indicador de foco e texto de dica
+#                                          (razao menor da norma)
+#
+# DECISAO DE PROJETO (ponto OPCIONAL da spec) -- tratar ou nao como
+# informativos os pares de bordas e de cores de destaque que sao so ornamento:
+#   Decidimos NAO classificar --border como ornamental. A borda deste projeto
+#   separa celula de tabela e delimita campo de formulario: e ela que carrega
+#   a fronteira do controle, entao responde pelo minimo de interface e conta
+#   no gate. Se um dia existir uma borda decorativa (divisoria estetica sem
+#   funcao de delimitar controle), ela entra aqui com informativo = true e
+#   com o motivo escrito nesta mesma linha.
+
+[[par]]
+frente = "--foreground"
+fundo = "--background"
+minimo = "texto"
+rotulo = "texto corrente sobre o fundo da pagina"
+informativo = false
+
+[[par]]
+frente = "--muted-foreground"
+fundo = "--background"
+minimo = "texto"
+rotulo = "texto secundario sobre o fundo da pagina"
+informativo = false
+
+[[par]]
+frente = "--card-foreground"
+fundo = "--card"
+minimo = "texto"
+rotulo = "texto sobre cartao"
+informativo = false
+
+[[par]]
+frente = "--primary-foreground"
+fundo = "--primary"
+minimo = "texto"
+rotulo = "rotulo de botao primario"
+informativo = false
+
+[[par]]
+frente = "--destructive-foreground"
+fundo = "--destructive"
+minimo = "texto"
+rotulo = "rotulo de botao destrutivo"
+informativo = false
+
+[[par]]
+frente = "--border"
+fundo = "--background"
+minimo = "interface"
+rotulo = "borda de campo sobre o fundo da pagina"
+informativo = false
+
+[[par]]
+frente = "--ring"
+fundo = "--background"
+minimo = "interface"
+rotulo = "indicador de foco sobre o fundo da pagina"
+informativo = false
+
+[[par]]
+frente = "--muted-foreground"
+fundo = "--muted"
+minimo = "interface"
+rotulo = "texto de dica sobre superficie abafada"
+informativo = false
+
+# --- PARES INFORMATIVOS ---------------------------------------------------
+# Combinacoes que o projeto NAO usa. Ficam aqui para a razao calculada
+# continuar a vista: reprovam e aparecem no relatorio, mas NAO derrubam o
+# gate. Cada uma explica por que aquele fundo tem um token de texto proprio.
+
+[[par]]
+frente = "--foreground"
+fundo = "--primary"
+minimo = "texto"
+rotulo = "ERRO HISTORICO: texto padrao sobre botao primario (por isso existe --primary-foreground)"
+informativo = true
+
+[[par]]
+frente = "--foreground"
+fundo = "--destructive"
+minimo = "texto"
+rotulo = "ERRO HISTORICO: texto padrao sobre botao destrutivo (por isso existe --destructive-foreground)"
+informativo = true

@@ -1,0 +1,69 @@
+# Matriz de rotas (por area) e matriz de viewports da varredura (GUARD 5).
+# Credenciais NUNCA moram aqui: vem por variavel de ambiente.
+
+[base]
+url = "http://127.0.0.1:8731"
+# Este viewport escolhe as paginas de detalhe para todos os outros. Se cada
+# um escolhesse as suas, a lista -- que renderiza diferente em cada largura --
+# daria a cada viewport um conjunto proprio de fichas, e o placar de um
+# viewport deixaria de falar das mesmas paginas que o de outro.
+viewport_de_resolucao = "desktop"
+
+# --- viewports -------------------------------------------------------------
+# DECISAO DE PROJETO (ponto OPCIONAL da spec) -- medir tambem numa largura
+# extra, mais estreita que a de qualquer celular: ADOTADO. O viewport de 320px
+# nao corresponde a nenhum aparelho corrente; ele existe para forcar a
+# largura, porque e onde
+# o texto longo e a tabela larga quebram primeiro. Medir so a partir de 390px
+# deixaria passar defeito que aparece com fonte ampliada pelo sistema, que na
+# pratica reduz a largura util para perto de 320px.
+[[viewport]]
+nome = "celular-estresse"
+largura = 320
+altura = 720
+piso_de_estresse = true
+
+[[viewport]]
+nome = "celular"
+largura = 390
+altura = 844
+
+[[viewport]]
+nome = "tablet"
+largura = 768
+altura = 1024
+
+[[viewport]]
+nome = "desktop"
+largura = 1280
+altura = 800
+
+# --- areas -----------------------------------------------------------------
+# Paginas publicas: a varredura as abre SEM SESSAO, como area propria. O parcial
+# registra a area de cada rota; o relatorio consolidado nao as agrupa a parte.
+[[area]]
+nome = "publica"
+com_sessao = false
+rotas = ["/login", "/publico/precos"]
+
+[[area]]
+nome = "operacao"
+com_sessao = true
+rotas = ["/", "/clientes", "/relatorios"]
+
+[[area]]
+nome = "detalhe"
+com_sessao = true
+lista = "/clientes"
+seletor_de_identificadores = "#tabela-clientes a[href^='/clientes/']"
+minimo_esperado = 5
+
+# --- rotas excluidas da medicao ---------------------------------------------
+# Cada uma leva um motivo, copiado para o parcial e para o relatorio.
+[[fora_de_escopo]]
+rota = "/sair"
+motivo = "encerra a sessao: medi-la derrubaria as rotas seguintes do mesmo viewport"
+
+[[fora_de_escopo]]
+rota = "/clientes/c-9999"
+motivo = "rota de erro 404, sem layout proprio a medir"

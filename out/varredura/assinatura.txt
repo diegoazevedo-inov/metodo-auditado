@@ -1,0 +1,19 @@
+celular	/clientes/c-1001	transbordo-visivel	#razao-social-longa
+celular	/clientes/c-1001	transbordo-visivel	body > div > main
+celular	/clientes/c-1002	transbordo-visivel	#razao-social-longa
+celular	/relatorios	transbordo-visivel	#bloco-relatorio
+celular	/relatorios	transbordo-visivel	body > div > main
+celular-estresse	/clientes/c-1001	transbordo-visivel	#razao-social-longa
+celular-estresse	/clientes/c-1001	transbordo-visivel	body > div > main
+celular-estresse	/clientes/c-1002	transbordo-visivel	#razao-social-longa
+celular-estresse	/clientes/c-1002	transbordo-visivel	body > div > main
+celular-estresse	/clientes/c-1003	transbordo-visivel	#razao-social-longa
+celular-estresse	/clientes/c-1003	transbordo-visivel	body > div > main
+celular-estresse	/clientes/c-1005	transbordo-visivel	#razao-social-longa
+celular-estresse	/clientes/c-1005	transbordo-visivel	body > div > main
+celular-estresse	/relatorios	transbordo-visivel	#bloco-relatorio
+celular-estresse	/relatorios	transbordo-visivel	body > div > main
+desktop	/relatorios	transbordo-visivel	#bloco-relatorio
+desktop	/relatorios	transbordo-visivel	body > div > main
+tablet	/relatorios	transbordo-visivel	#bloco-relatorio
+tablet	/relatorios	transbordo-visivel	body > div > main
