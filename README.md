@@ -1,7 +1,9 @@
 # Método Auditado
 
-Um método para desenvolver software com agentes de codificação sem depender do
-que o agente diz sobre o próprio trabalho. Ele se apoia em três regras: quem
+[English summary](README.en.md)
+
+Um método para desenvolver software com sistemas agênticos sem depender do
+que o sistema diz sobre o próprio trabalho. Ele se apoia em três regras: quem
 implementa não audita, nenhuma decisão é tomada sem medição, e nenhum
 verificador entra em uso antes de acusar um defeito plantado de propósito.
 
@@ -10,8 +12,8 @@ começar um projeto novo sem acumulá-la.
 
 ## O problema
 
-Um agente de codificação entrega o código e, junto, um resumo dizendo que está
-tudo certo. As duas coisas não se confundem: um resumo convincente não garante
+Um sistema agêntico entrega o artefato e, junto, a afirmação de que o artefato
+está correto. As duas coisas não se confundem: um resumo convincente não garante
 código correto. O método existe para que a distância entre o que foi relatado
 e o que foi feito apareça durante o desenvolvimento, e não em produção.
 
