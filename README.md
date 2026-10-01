@@ -23,7 +23,7 @@ e o que foi feito apareça durante o desenvolvimento, e não em produção.
 |---|---|---|
 | **Remediação** | Recuperar um projeto existente: o protocolo e um roteiro por eixo | [remediacao/](remediacao/) |
 | **Nascença** | Começar um projeto novo já dentro das regras: roteiro de partida e decisões de arquitetura | [nascenca/](nascenca/) |
-| **Skills** | Uma skill de agente por eixo: mede a dívida e devolve o esqueleto do plano, sem corrigir nada | [skills/](skills/) |
+| **Skills** | Uma skill por eixo: mede a dívida e devolve o esqueleto do plano, sem corrigir nada | [skills/](skills/) |
 | **Verificadores** | Os seis guards de interface que as fases mandam rodar, cada um com a sua prova | [guards/](guards/) |
 
 ## Princípios
