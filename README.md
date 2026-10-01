@@ -1,168 +1,68 @@
-# Seis verificadores de qualidade de interface
+# Método Auditado
 
-Verificadores automáticos para interface web: paleta de cores, layout
-responsivo, contraste nos dois temas, estouro de conteúdo, varredura em vários
-tamanhos de tela e consolidação do resultado num relatório com assinatura
-reprodutível.
+Protocolo de desenvolvimento com agentes de codificação, no qual a arquitetura
+não confia no agente. Papéis separados, auditoria medida antes de opinião,
+e guards que só valem depois de terem ficado vermelhos na sua frente.
 
-Cada um tem o mesmo contrato de saída, declara no próprio cabeçalho o que
-**não** cobre, e vem com uma prova que planta violações fabricadas e exige que
-ele as recuse. Uma aplicação de exemplo (`fixtures/`) exercita tudo, para as
-provas rodarem de ponta a ponta.
+Destilado de um ciclo real de remediação e generalizado para reaplicação —
+em projetos existentes e em projetos novos.
 
-## Os seis
+## O que ele resolve
 
-| # | verificador | onde roda | entrada |
-|---|---|---|---|
-| 1 | `uiguards.palette` — paleta de cores | estático | código de interface |
-| 2 | `uiguards.ratchet` — layout responsivo (catraca) | estático | código + baseline |
-| 3 | `uiguards.contrast` — contraste computado | estático | tokens de estilo + tabela de pares |
-| 4 | `uiguards.overflow` — estouro por elemento | navegador | página carregada |
-| 5 | `sweep/executar.py` — varredura multi-viewport | navegador | matriz de rotas e viewports |
-| 6 | `uiguards.consolidate` — consolidação e assinatura | — | parciais da varredura |
+Agente entrega código e entrega relatório. **Relato bom não é código bom.**
+Já encontrei defeito de segurança em componente que o resumo do próprio
+agente havia declarado conforme. Este kit é o protocolo que faz essa
+diferença aparecer antes da produção, e não depois.
 
-## Contrato comum
+## As duas metades
 
-| código | significado |
-|---|---|
-| `0` | executei e está limpo |
-| `1` | executei e **achei** violação |
-| `2` | **não consigo executar** (entrada ausente, malformada, config inválida) |
+| Metade | Para quê | Onde |
+|---|---|---|
+| **Remediação** | Curar um projeto existente com dívida | [remediacao/](remediacao/) |
+| **Nascença** | Projeto novo já nascer certo — dívida nunca nasce | [nascenca/](nascenca/) |
+| **Skills** | Empacotamento reutilizável do protocolo | [skills/](skills/) |
+| **Verificadores** | Os seis guards de interface que as fases mandam rodar, cada um com a sua prova | [guards/](guards/) |
 
-Todo erro interno inesperado é traduzido para `2`, nunca para `1`: um
-verificador quebrado jamais pode passar por base limpa.
+## As três ideias que sustentam o resto
 
-**Escape hatch** (verificadores estáticos): comentário
-`ui-guard-allow: <motivo>` na própria linha, ou sozinho na linha imediatamente
-anterior. Marcador que divide a linha com código isenta só aquela linha. O
-escopo é opcional — `ui-guard-allow(responsivo): <motivo>`. Marcador sem
-motivo, ou com motivo curto demais, **não isenta nada**.
+**Auditoria medida antes de opinião.** Nenhuma fase começa com "acho que".
+Começa com números reprodutíveis, e o número vira a manchete do plano e o
+placar que as fases zeram.
 
-**Determinismo**: a mesma entrada dá sempre a mesma saída. Cada lista sai numa
-ordem estável, de critério explícito, e nenhuma saída leva data ou hora. O
-identificador da execução é entrada e fica só nos parciais; por isso, entre
-duas execuções independentes de uma interface que não mudou, relatório,
-assinatura e `resumos.sha256` se repetem byte a byte.
+**Violação sintética.** Um detector que nunca acusou na sua frente não provou
+nada. Plante o defeito de propósito e confirme que o guard fica vermelho —
+antes de confiar nele.
 
-## Requisitos
+**Reproduzir a prova ≠ validar a premissa da prova.** Suíte verde e Lighthouse
+verde sobre um service worker que nunca instalava: o teste aceitava estado
+transitório. Endureça a asserção para o estado final antes de confiar no verde.
 
-- Python 3.13. Os verificadores 1, 2, 3 e 6 usam só a biblioteca padrão.
-- Playwright com Chromium, para os verificadores 4 e 5:
+## Os 4 eixos
 
-  ```bash
-  pip install playwright
-  python3 -m playwright install chromium
-  ```
+1. **Tema claro/escuro** — tokens semânticos, contraste WCAG computado, guard de paleta
+2. **Fluxos contínuos de UI/UX** — navegação com contexto, filtros na URL
+3. **Responsividade** — gabarito de layout, varredura como spec, catraca
+4. **PWA** — cache seguro para dado vivo, SW provado, manifest theme-aware
 
-- As provas são scripts `bash`, testados em Linux (usam `sed -i` e
-  `sha256sum` do GNU).
+Cada eixo traz receita de auditoria medida, fases com gate, prompts-molde para
+executor e auditor, e o legado permanente — os guards e specs que ficam
+impedindo a dívida de voltar.
 
-## Uso
+## Por onde começar
 
-Todos os comandos partem da raiz do repositório.
+- Projeto existente → [METODO.md](METODO.md), depois o eixo com a dívida mais dolorida
+- Projeto novo → [nascenca/BOOTSTRAP.md](nascenca/BOOTSTRAP.md), antes da primeira tela
+- Em qualquer caso, o [METODO.md](METODO.md) é a lei; os eixos são aplicações dela
 
-```bash
-# 1, 2 e 3 — estáticos
-python3 -m uiguards.palette   --config guards.toml
-python3 -m uiguards.ratchet   --config guards.toml --modo catraca   # ou estrito | refixar
-python3 -m uiguards.contrast  --config guards.toml --pares pares-contraste.toml
+## Resultados do ciclo de origem
 
-# aplicação de exemplo (necessária para 4, 5 e 6)
-python3 fixtures/site/servidor.py 8731 &
+De 60 rotas estourando, 6.606 cores hardcoded, navegação 93% quebrada e uma PWA
+que não instalava — para zero estouro provado por assinatura, dois temas com
+contraste validado, navegação com contexto e Lighthouse 100 em produção.
 
-# 4 — medição avulsa de uma URL (mede; não aprova nem reprova)
-python3 -m uiguards.overflow --config guards.toml --url http://127.0.0.1:8731/relatorios
+12 pareceres de auditoria adversarial. 3 bugs reais de produto descobertos
+no caminho.
 
-# 5 — a suíte começa pela prova do GUARD 4; se ela reprovar, nada é medido.
-#     Medição nova vai para um diretório próprio, nunca para out/varredura.
-export FIXTURE_USUARIO=operador FIXTURE_SENHA=senha-de-fixture
-ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-python3 sweep/executar.py --id "$ID" --saida "out/medicao/$ID"
+## Licença
 
-# 6 — consolida, assina e resume; compara com a baseline fixada
-python3 -m uiguards.consolidate --parciais "out/medicao/$ID"
-(cd "out/medicao/$ID" && sha256sum -c resumos.sha256)
-diff out/varredura/assinatura.txt "out/medicao/$ID/assinatura.txt"
-```
-
-Credenciais **sempre** por variável de ambiente, nunca embutidas.
-
-O identificador da execução é **fornecido externamente** e tem de ser
-**único**. O consolidador recusa identificador ausente, identificadores
-diferentes e escopos diferentes (rotas medidas inclusive); dois parciais de
-execuções distintas com o **mesmo** identificador e o mesmo escopo passam como
-uma execução só. Um `uuid4`, como acima, não se repete e não carrega data nem
-hora. O hash do commit **não serve**: ele se repete em toda execução do mesmo
-commit.
-
-### Regerar a baseline fixada (`out/varredura/`)
-
-É um passo próprio, feito de propósito, e nunca o efeito colateral de medir:
-
-```bash
-export FIXTURE_USUARIO=operador FIXTURE_SENHA=senha-de-fixture
-A="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-B="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-python3 sweep/executar.py --id "$A" --saida "out/medicao/$A"
-python3 sweep/executar.py --id "$B" --saida "out/medicao/$B"
-python3 -m uiguards.consolidate --parciais "out/medicao/$A"
-python3 -m uiguards.consolidate --parciais "out/medicao/$B"
-# só com assinatura e relatório iguais nas duas a baseline pode ser dada por fixada
-cmp "out/medicao/$A/assinatura.txt" "out/medicao/$B/assinatura.txt" \
-  && cmp "out/medicao/$A/relatorio.txt" "out/medicao/$B/relatorio.txt" \
-  && rm -rf out/varredura && cp -r "out/medicao/$A" out/varredura \
-  && (cd out/varredura && sha256sum -c resumos.sha256)
-```
-
-`out/medicao/` é ignorado pelo git; `out/varredura/` é a baseline versionada.
-
-## Provas
-
-Um verificador só é usado depois que um caso fabricado de **cada espécie que
-ele detecta** foi posto diante dele e recusado. Cada prova **afirma** o que
-espera — código de saída, espécie nomeada, silêncio sobre o que é legítimo — e
-devolve `1` quando alguma verificação não fecha.
-
-```bash
-proofs/prova_guard1.sh        # 55 verificações: as 9 espécies, escape hatch, importações, configuração
-proofs/prova_guard2.sh        # 61 verificações: as 4 regras, catraca para baixo e para cima, os modos, baseline
-proofs/prova_guard3.sh        # 36 verificações: violar, corrigir, token ausente, alfa, faixa, informativos
-python3 -m sweep.prova_sonda  # 23 testes: as 4 espécies, as isenções, o critério decorativo, texto gerado pelo estilo
-proofs/prova_guard5.sh        # 24 verificações: destino, cobertura, estado, detector reprovado, credenciais, matriz
-proofs/prova_guard6.sh        # 32 verificações: assinatura reprodutível, recusas, guard de âncora, erros HTTP
-proofs/experimento_piso.py    # determinação do piso de severidade por medição
-```
-
-As provas restauram tudo que tocam — inclusive sob `Ctrl+C` — e escrevem
-apenas em diretório temporário próprio; a do GUARD 6 sobe a aplicação de
-exemplo numa porta livre escolhida na hora e a encerra ao sair.
-
-A sonda e as provas 5 e 6 precisam da aplicação de exemplo no ar e de
-`FIXTURE_USUARIO`/`FIXTURE_SENHA` definidos. Elas medem a aplicação que
-estiver em `FIXTURE_BASE_URL` (por padrão `http://127.0.0.1:8731`), e não o
-`fixtures/site/servidor.py` da árvore: depois de alterar o servidor de
-exemplo, reinicie-o antes de rodar as provas. Se a porta 8731 estiver ocupada,
-suba o servidor em outra e aponte `FIXTURE_BASE_URL` para ela.
-
-## Estrutura
-
-```
-uiguards/        common.py  palette.py  ratchet.py  contrast.py
-                 overflow.py  overflow_probe.js  consolidate.py
-sweep/           prova_sonda.py  varredura.py  executar.py
-proofs/          uma prova por verificador + experimento do piso
-fixtures/        ui-src/ (alvo estático)  tokens.css  site/servidor.py (aplicação)
-out/varredura/   baseline fixada da varredura
-guards.toml      configuração dos verificadores
-rotas.toml       matriz de rotas e viewports
-pares-contraste.toml      tabela de pares + a decisão sobre ornamentais
-baseline-responsivo.json  contagem conhecida da catraca
-```
-
-## Documentos
-
-| documento | o que é |
-|---|---|
-| [SPEC.md](SPEC.md) | o que cada verificador tem de fazer, e como se prova |
-| [DECISOES.md](DECISOES.md) | as escolhas desta implementação onde a spec deixa em aberto |
-| [LIMITACOES.md](LIMITACOES.md) | o que é conhecido e ainda pede trabalho |
+Apache 2.0
