@@ -44,7 +44,7 @@ grep -rn "router.back()" src/app --include="*.tsx"
 grep -rn "returnTo" src/app src/lib src/hooks --include="*.ts*"
 
 # (e) Telas de lista com filtro em useState que NUNCA leem a URL
-grep -rln "useState" src/app --include="*.tsx" | xargs grep -Ln "useSearchParams"
+grep -rln "useState" src/app --include="<arquivo-da-tela>" | xargs grep -Ln "useSearchParams"
 
 # (f) Abas: quem lê ?aba= na montagem vs quem grava de volta na troca
 grep -rn "searchParams.get('aba')" src/app --include="*.tsx"

@@ -154,7 +154,7 @@ regra (exit 1 nomeando as 4) + escape hatch + os dois sentidos.
 
 ### 3.5 Piloto com gate do dono
 
-2 telas: a líder do ranking (`<modulo>`, 221px) e a pior do app (outro `<modulo>`, 450px cortados) →
+2 telas: a líder do ranking (`<modulo>`) e a pior do app (outro `<modulo>`, 450px cortados) →
 0·0·0 nos 3 viewports, screenshots antes/depois nos 2 temas (o "antes" por `git checkout <sha> --
 src`, não de memória). Honestidade obrigatória: no app do ciclo 2026 o ganho da líder era "medido, não
 visual" em mobile (hub embedded + clip do shell) — declarado, e o gate visual do dono olhou a tela

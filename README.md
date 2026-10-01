@@ -1,68 +1,87 @@
 # Método Auditado
 
-Protocolo de desenvolvimento com agentes de codificação, no qual a arquitetura
-não confia no agente. Papéis separados, auditoria medida antes de opinião,
-e guards que só valem depois de terem ficado vermelhos na sua frente.
+Um método para desenvolver software com agentes de codificação sem depender do
+que o agente diz sobre o próprio trabalho. Ele se apoia em três regras: quem
+implementa não audita, nenhuma decisão é tomada sem medição, e nenhum
+verificador entra em uso antes de acusar um defeito plantado de propósito.
 
-Destilado de um ciclo real de remediação e generalizado para reaplicação —
-em projetos existentes e em projetos novos.
+Serve para dois casos: recuperar um projeto que já acumulou dívida técnica e
+começar um projeto novo sem acumulá-la.
 
-## O que ele resolve
+## O problema
 
-Agente entrega código e entrega relatório. **Relato bom não é código bom.**
-Já encontrei defeito de segurança em componente que o resumo do próprio
-agente havia declarado conforme. Este kit é o protocolo que faz essa
-diferença aparecer antes da produção, e não depois.
+Um agente de codificação entrega o código e, junto, um resumo dizendo que está
+tudo certo. As duas coisas não se confundem: um resumo convincente não garante
+código correto. O método existe para que a distância entre o que foi relatado
+e o que foi feito apareça durante o desenvolvimento, e não em produção.
 
-## As duas metades
+## O que tem aqui
 
-| Metade | Para quê | Onde |
+| Parte | Para quê | Onde |
 |---|---|---|
-| **Remediação** | Curar um projeto existente com dívida | [remediacao/](remediacao/) |
-| **Nascença** | Projeto novo já nascer certo — dívida nunca nasce | [nascenca/](nascenca/) |
-| **Skills** | Empacotamento reutilizável do protocolo | [skills/](skills/) |
+| **Remediação** | Recuperar um projeto existente: o protocolo e um roteiro por eixo | [remediacao/](remediacao/) |
+| **Nascença** | Começar um projeto novo já dentro das regras: roteiro de partida e decisões de arquitetura | [nascenca/](nascenca/) |
+| **Skills** | Uma skill de agente por eixo: mede a dívida e devolve o esqueleto do plano, sem corrigir nada | [skills/](skills/) |
 | **Verificadores** | Os seis guards de interface que as fases mandam rodar, cada um com a sua prova | [guards/](guards/) |
 
-## As três ideias que sustentam o resto
+## Princípios
 
-**Auditoria medida antes de opinião.** Nenhuma fase começa com "acho que".
-Começa com números reprodutíveis, e o número vira a manchete do plano e o
-placar que as fases zeram.
+**Quem implementa não audita.** Três papéis, nunca na mesma sessão: quem
+planeja e audita, quem executa, e o dono, que decide e tem cada decisão
+registrada. A auditoria não aceita o relato da entrega como prova: executa de
+novo as provas. Ela também erra, e por isso o executor pode contestá-la, com
+prova.
 
-**Violação sintética.** Um detector que nunca acusou na sua frente não provou
-nada. Plante o defeito de propósito e confirme que o guard fica vermelho —
-antes de confiar nele.
+**Medir antes de opinar.** Toda fase começa por uma medição reproduzível. O
+número vira a meta do plano e o placar que as fases seguintes levam a zero.
 
-**Reproduzir a prova ≠ validar a premissa da prova.** Suíte verde e Lighthouse
-verde sobre um service worker que nunca instalava: o teste aceitava estado
-transitório. Endureça a asserção para o estado final antes de confiar no verde.
+**Defeito plantado antes de confiar.** Um verificador que nunca acusou nada não
+provou que funciona. Antes de usá-lo, planta-se de propósito o defeito que ele
+deve pegar, e confirma-se que ele reprova.
 
-## Os 4 eixos
+**Prova verde não valida a premissa.** Uma suíte que passa pode estar provando a
+coisa errada. Um teste que aceita um estado intermediário fica verde mesmo
+quando o resultado final nunca acontece, como um service worker que nunca chega
+a instalar. A asserção tem de exigir o estado final.
 
-1. **Tema claro/escuro** — tokens semânticos, contraste WCAG computado, guard de paleta
-2. **Fluxos contínuos de UI/UX** — navegação com contexto, filtros na URL
-3. **Responsividade** — gabarito de layout, varredura como spec, catraca
-4. **PWA** — cache seguro para dado vivo, SW provado, manifest theme-aware
+## Os quatro eixos
 
-Cada eixo traz receita de auditoria medida, fases com gate, prompts-molde para
-executor e auditor, e o legado permanente — os guards e specs que ficam
-impedindo a dívida de voltar.
+1. **Tema claro e escuro**: cores só por tokens semânticos, contraste calculado
+   pela WCAG e verificador de paleta.
+2. **Fluxos de navegação**: voltar sem perder o contexto, com filtros e estado
+   na URL.
+3. **Responsividade**: gabarito de layout, varredura em vários tamanhos de tela
+   e uma catraca que impede a dívida de crescer.
+4. **PWA**: cache que não guarda dado autenticado, instalação do service worker
+   comprovada e manifesto que acompanha o tema.
+
+Cada eixo traz a receita da auditoria medida, as fases com critério de
+aprovação, modelos de prompt para executor e auditor, e o que fica depois da
+correção: os verificadores e as especificações que impedem a dívida de voltar.
 
 ## Por onde começar
 
-- Projeto existente → [METODO.md](METODO.md), depois o eixo com a dívida mais dolorida
-- Projeto novo → [nascenca/BOOTSTRAP.md](nascenca/BOOTSTRAP.md), antes da primeira tela
-- Em qualquer caso, o [METODO.md](METODO.md) é a lei; os eixos são aplicações dela
+- **Projeto existente:** leia o [METODO.md](METODO.md) e comece pelo eixo com a
+  maior dívida medida.
+- **Projeto novo:** siga o [nascenca/BOOTSTRAP.md](nascenca/BOOTSTRAP.md) antes
+  da primeira tela.
+- Nos dois casos, o [METODO.md](METODO.md) é a lei; os eixos são aplicações
+  dela.
 
-## Resultados do ciclo de origem
+## Resultados
 
-De 60 rotas estourando, 6.606 cores hardcoded, navegação 93% quebrada e uma PWA
-que não instalava — para zero estouro provado por assinatura, dois temas com
-contraste validado, navegação com contexto e Lighthouse 100 em produção.
+Na primeira aplicação completa do método, numa aplicação web em produção:
 
-12 pareceres de auditoria adversarial. 3 bugs reais de produto descobertos
-no caminho.
+- **Responsividade:** de 60 rotas com estouro de layout para zero, comprovado
+  por assinatura reprodutível.
+- **Tema:** de 6.606 cores fixas no código para zero, com dois temas e contraste
+  validado.
+- **Navegação:** de 93% quebrada para navegação que preserva o contexto.
+- **PWA:** de uma instalação que não funcionava para Lighthouse 100 em produção.
+
+No caminho, 12 pareceres de auditoria adversarial e 3 defeitos reais do produto
+encontrados.
 
 ## Licença
 
-Apache 2.0
+Apache 2.0. Veja [LICENSE](LICENSE).

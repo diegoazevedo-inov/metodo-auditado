@@ -37,14 +37,14 @@ asset. Tabela real:
 
 | # | Padrão | Estratégia | cacheName | Por quê |
 |---|---|---|---|---|
-| 1 | `/api/*` same-origin | **NetworkOnly** | `<nome-do-cache>` | TODO dado vivo (saldo, fatura, extrato, de qualquer área) — nunca stale; offline → falha → /offline |
-| 2 | `/uploads/*` same-origin | **NetworkOnly** | `<nome-do-cache>` | documento AUTENTICADO (comprovante, contrato) — ver a lição abaixo |
-| 3 | `/_next/static/*` | CacheFirst 1a | `<nome-do-cache>` | imutável (hash no nome) |
-| 4 | fontes (`woff2`…) | CacheFirst 1a | `<nome-do-cache>` | imutável |
-| 5 | `/_next/image?url=…` | StaleWhileRevalidate 30d | `<nome-do-cache>` | imagem otimizada |
-| 6 | imagens (`png/jpg/svg/ico/webp`) | CacheFirst 30d | `<nome-do-cache>` | versionadas |
-| 7 | navegação (`request.mode==='navigate'`) | NetworkFirst timeout 3s | `<nome-do-cache>` | shell fresco; offline → /offline (fallbacks.document). NetworkFirst de navegação nunca serve DADO stale — só o shell já baixado |
-| 8 | cross-origin | NetworkOnly | `<nome-do-cache>` | terceiros nunca cacheiam (custo zero se o app usa `next/font` local) |
+| 1 | `/api/*` same-origin | **NetworkOnly** | `<nome-do-cache-1>` | TODO dado vivo (saldo, fatura, extrato, de qualquer área) — nunca stale; offline → falha → /offline |
+| 2 | `/uploads/*` same-origin | **NetworkOnly** | `<nome-do-cache-2>` | documento AUTENTICADO (comprovante, contrato) — ver a lição abaixo |
+| 3 | `/_next/static/*` | CacheFirst 1a | `<nome-do-cache-3>` | imutável (hash no nome) |
+| 4 | fontes (`woff2`…) | CacheFirst 1a | `<nome-do-cache-4>` | imutável |
+| 5 | `/_next/image?url=…` | StaleWhileRevalidate 30d | `<nome-do-cache-5>` | imagem otimizada |
+| 6 | imagens (`png/jpg/svg/ico/webp`) | CacheFirst 30d | `<nome-do-cache-6>` | versionadas |
+| 7 | navegação (`request.mode==='navigate'`) | NetworkFirst timeout 3s | `<nome-do-cache-7>` | shell fresco; offline → /offline (fallbacks.document). NetworkFirst de navegação nunca serve DADO stale — só o shell já baixado |
+| 8 | cross-origin | NetworkOnly | `<nome-do-cache-8>` | terceiros nunca cacheiam (custo zero se o app usa `next/font` local) |
 
 **A lição paga (achado A1, CRÍTICO, da auditoria final):** a regra 2 NÃO existia na primeira
 entrega. Um comprovante de pagamento em `/uploads/*.jpg` casava a regra 6 (CacheFirst de
