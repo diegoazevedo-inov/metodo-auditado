@@ -1,0 +1,28 @@
+# Integração contínua: a cada push ou pull request rodam as provas dos
+# verificadores estáticos (paleta, catraca responsiva, contraste). Cada prova
+# planta violações fabricadas e exige que o verificador as recuse.
+# As provas 4, 5 e 6 precisam de navegador (varredura) e ficam fora por ora.
+name: provas
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  provas:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: guards
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prova do guard 1 (paleta)
+        run: bash proofs/prova_guard1.sh | tail -1
+      - name: Prova do guard 2 (catraca responsiva)
+        run: bash proofs/prova_guard2.sh | tail -1
+      - name: Prova do guard 3 (contraste)
+        run: bash proofs/prova_guard3.sh | tail -1
