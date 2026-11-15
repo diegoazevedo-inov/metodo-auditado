@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Para citar, use os metadados abaixo."
+title: "Método Auditado"
+abstract: "Método para desenvolver software com sistemas agênticos sem depender do que o sistema diz sobre o próprio trabalho: quem implementa não audita, nenhuma decisão é tomada sem medição e nenhum verificador entra em uso antes de acusar um defeito plantado de propósito."
+type: software
+authors:
+  - given-names: "Diêgo"
+    family-names: "Azevedo"
+    orcid: "https://orcid.org/0009-0009-1839-7476"
+version: "1.0.0"
+date-released: "2026-11-15"
+license: Apache-2.0
+repository-code: "https://github.com/diegoazevedo-inov/metodo-auditado"
+keywords:
+  - sistemas agênticos
+  - engenharia de software
+  - auditoria
+  - qualidade de software
