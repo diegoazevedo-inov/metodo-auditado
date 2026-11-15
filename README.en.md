@@ -1,5 +1,7 @@
 # Método Auditado — English summary
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24237079.svg)](https://doi.org/10.5281/zenodo.24237079)
+
 A method for building software with agentic systems without relying on what
 the system says about its own work. It rests on three rules: the one who
 implements does not audit, no decision is made without measurement, and no

@@ -1,5 +1,7 @@
 # Método Auditado
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24237079.svg)](https://doi.org/10.5281/zenodo.24237079)
+
 [English summary](README.en.md)
 
 Um método para desenvolver software com sistemas agênticos sem depender do
